@@ -57,6 +57,13 @@ class ScholarshipCalculatorTest {
         assertEquals(2.5, calculator.gpa(new double[]{95, 85, 75, 65}));
     }
 
+    @Test void letterGradeAt60ReturnsD() { assertEquals("D", calculator.letterGrade(60)); }
+    @Test void letterGradeJustBelow60ReturnsF() { assertEquals("F", calculator.letterGrade(59.99)); }
+    @Test void letterGradeAt6999ReturnsD() { assertEquals("D", calculator.letterGrade(69.99)); }
+    @Test void letterGradeAtZeroReturnsF() { assertEquals("F", calculator.letterGrade(0)); }
+    @Test void letterGradeAt100ReturnsA() { assertEquals("A", calculator.letterGrade(100)); }
+    @Test void letterGradeAt8999ReturnsB() { assertEquals("B", calculator.letterGrade(89.99)); }
+    @Test void letterGradeAt90ReturnsA() { assertEquals("A", calculator.letterGrade(90)); }
 
     @Test void scholarshipTopTierNeedsBothCriteria() {
         assertEquals(100, calculator.scholarship(3.9, 16, false));
